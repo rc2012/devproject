@@ -1,0 +1,56 @@
+Outcome of Care Measures by State
+========================================================
+author: R Chmielewski 
+date: 02/27/2016
+
+Do you want to know which hospital in your state ranks highest?
+========================================================
+
+
+- Using publicly available statistics from Centers for Medicare and Medicaide Services
+- Hospital rankings for 3 common outcomes are available: heart attack, heart failure and pneumonia
+- Accessible and easy to use
+
+For example...
+========================================================
+
+The highest ranked hospital for treating heart attacks in the state of Maryland is:
+
+```{r,echo=FALSE}
+setwd("C:/Users/Renata/Documents/R/dev project")
+state="MD"
+outcome_data <- read.csv("outcome-of-care-measures.csv", stringsAsFactors=FALSE)
+state_names<-unique(outcome_data$State)
+outcome_per_state<-outcome_data[ which(outcome_data$State==state),]
+	outcome_per_state[,11]<-suppressWarnings(as.numeric(outcome_per_state[,11],na.omit))
+	newdata <- outcome_per_state[order(outcome_per_state[,11], outcome_per_state[,2]),]
+
+newdata[1,2]
+
+```
+
+For example..
+========================================================
+
+The top ten hospitals ranked highest in the state of Maryland for treating heart attacks are:
+```{r, echo=FALSE}
+outcome_data <- read.csv("outcome-of-care-measures.csv", stringsAsFactors=FALSE)
+state_names<-unique(outcome_data$State)
+state="MD"
+outcome_per_state<-outcome_data[ which(outcome_data$State==state),]
+	outcome_per_state[,11]<-suppressWarnings(as.numeric(outcome_per_state[,11],na.omit))
+	newdata <- outcome_per_state[order(outcome_per_state[,11], outcome_per_state[,2]),]
+	row_num<-11
+	final <- newdata[!(is.na(newdata[,row_num])),]
+
+	h<-head(newdata[,2],10)
+##final[nrow(final),2]
+h
+
+```
+To learn more:
+========================================================
+
+Visit our website: https://rc2016.shinyapps.io/devproject/
+
+Thank You!

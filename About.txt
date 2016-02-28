@@ -1,0 +1,7 @@
+This Shiny Application uses the Outcome of Care Measures by State data to provide 
+the user with information about hospital rankings.  The user can select one of 3 outcomes:
+Heart Attack, Heart Failure or Pneumonia and one of the 50 states.  The best option finds the 
+hospital with the highest ranking for a particular outcome in the selected state.  The top 10
+option finds the top 10 ranked hospitals for a particular outcome in the selected state.
+The rank all option finds the best hospital in every state.  
+
